@@ -1,0 +1,174 @@
+<html>
+
+<head>
+    <title>Student Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 95%;
+            padding: 10px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        input[type="radio"] {
+            margin: 0 10px;
+        }
+
+        .gb {
+            padding: 10px 50px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .gb:hover {
+            background-color: darkgreen;
+        }
+
+        .rb {
+            padding: 5px 20px;
+            font-size: 18px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .rb:hover {
+            background-color: darkred;
+        }
+
+        #insertrow th,
+        #insertrow td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="container">
+        <h1>Student Form</h1>
+        <table>
+            <tr>
+                <th>Name</th>
+                <td><input type="text" id="myname" /></td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td><input type="text" id="age" /></td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td><input type="radio" name="gender" id="gender" value="Male" />Male
+                    <input type="radio" name="gender" id="gender" value="Female" />Female
+                </td>
+            </tr>
+            <tr>
+                <th>Course</th>
+                <td><select id="course">
+                        <option>C</option>
+                        <option>C++</option>
+                        <option>Python</option>
+                        <option>Java</option>
+                        <option>Java Script</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>E-Mail</th>
+                <td><input type="email" id="mail" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="gb" onclick="updateTable()">Save</button></td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <table id="insertrow">
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Course</th>
+                <th>Gender</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+
+        </table>
+    </div>
+    <script>
+        var myname = document.getElementById("myname")
+        var age = document.getElementById("age")
+        var gender = document.getElementById("gender")
+        var course = document.getElementById("course")
+        var mail = document.getElementById("mail")
+        var insertitem = document.getElementById("insertrow")
+        function updateTable() {
+            var elt = document.createElement("tr")
+            elt.innerHTML = "<td>" + myname.value + "</td>" + "<td>" + age.value + "</td>" + "<td>" + course.value + "</td>"
+                + "<td>" + gender.value + "</td>" + "<td>" + mail.value + "</td>" + "<td><button class='rb' onclick='deleteItem(event)'>Delete</td>"
+            insertitem.append(elt)
+        }
+        function deleteItem(event) {
+            event.target.parentElement.parentElement.remove()
+        }
+    </script>
+
+</body>
+
+</html>
